@@ -139,16 +139,12 @@ train_loader = torch.utils.data.DataLoader(
     collate_fn=collate_fn)
 
 
-# Train the model
 train_model(model, train_loader, optimizer, num_epochs=2)
 
-# After training, save the model for future use or evaluation
 torch.save(model.state_dict(), 'fasterrcnn_resnet50_fpn_finetuned.pth')
 
-# Now evaluate the model with the evaluation code you have already written
 model.eval()
 with torch.no_grad():
-    # Run the model on the test data and gather the results
     results = []
     image_precisions = []
     for images, targets in test_loader:
